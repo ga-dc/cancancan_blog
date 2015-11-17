@@ -10,11 +10,13 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    authorize! :create, @article
   end
 
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    authorize! :create, @article
     if @article.save
       redirect_to @article
     else
