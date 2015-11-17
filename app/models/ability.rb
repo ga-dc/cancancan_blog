@@ -6,5 +6,8 @@ class Ability
       if user
         can :create, Article
       end
+      can :update, Article do |article|
+        user == article.user
+      end
   end
 end

@@ -26,10 +26,12 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    authorize! :update, @article
   end
 
   def update
     @article = Article.find(params[:id])
+    authorize! :update, @article
     if @article.update(article_params)
       redirect_to @article
     else
