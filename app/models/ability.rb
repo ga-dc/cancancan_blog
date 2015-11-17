@@ -6,8 +6,6 @@ class Ability
       if user
         can :create, Article
       end
-      can [:update, :destroy], Article do |article|
-        user == article.user
-      end
+      can [:update, :destroy], Article, :user => user
   end
 end
